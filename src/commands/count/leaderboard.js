@@ -10,7 +10,6 @@ module.exports = {
      */
     run: async(client, message, args) => {
         data.find({ Guild: message.guild.id }, async(err, data) => {
-            console.log(data)
             const sort = data.sort((a, b) => b.Counts - a.Counts);
 
             let i = 1;

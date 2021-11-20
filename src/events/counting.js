@@ -1,15 +1,24 @@
+const { MessageEmbed } = require('discord.js');
 const client = require('../index');
+const Discord = require('discord.js')
 const db = require('../schema/Guild');
 const user = require("../schema/Users");
-client.on('message', async(message) => {
+client.on('message', async(message, client) => {
     const data = await db.findOne({ id: message.guild.id });
 
-    if(!data) return;
-
+    if(!data) return; 
+    if(message.author.bot) return;
     if(message.channel.id !== data.Channel) return;
     console.log()
     if(parseInt(message.content) === data.Current + 1) {
-        console.log(data.Current)
+        console.log(data.Current + 2)
+        const embed = new Discord.MessageEmbed()
+        .setTimestamp()
+        .setFooter('Hype')
+        .setColor('GREEN')
+        .setTitle('Correct number!')
+        .setDescription(`Next number is: ${data.Current + 2}`)
+        message.reply(embed)
         user.findOne({ id: message.author.id, Guild: message.guild.id }, async(err, data) => {
             if(err) throw err;
             if(data) {
@@ -23,8 +32,10 @@ client.on('message', async(message) => {
             }
             data.save();
         })
-    
+
+
         data.Current = parseInt(message.content);
         data.save();
     } else message.delete();
-})
+} 
+)

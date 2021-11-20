@@ -4,13 +4,10 @@ const client = new Client({
 })
 
 const mongoose  = require('mongoose')
-mongoose.connect(require(process.env.MONGO), {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-}).then(console.log('Connected to mongo db!'));
 
 const path = require('path')
 const fs = require('fs')
+require('dotenv').config()
 //const config = require('./config.json');
 module.exports = client;
 client.commands = new Collection();
@@ -38,5 +35,15 @@ process.on("multipleResolves", (type, promise, reason) => {
     console.log(" [antiCrash] :: Multiple Resolves");
     console.log(type, promise, reason);
 });
+
+mongoose.connect(process.env.MONGODB_SRV, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+}).then(() =>{
+    console.log('Connected to MongoDB database successfully.')
+}).catch((err)=>{
+    console.log(err);
+})
 
 client.login(process.env.TOKEN);
