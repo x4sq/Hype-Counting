@@ -4,17 +4,17 @@ const client = new Client({
 })
 
 const mongoose  = require('mongoose')
-mongoose.connect(require('./config.json').mongo, {
+mongoose.connect(require(process.env.MONGO), {
     useUnifiedTopology: true,
     useNewUrlParser: true,
 }).then(console.log('Connected to mongo db!'));
 
 const path = require('path')
 const fs = require('fs')
-const config = require('./config.json');
+//const config = require('./config.json');
 module.exports = client;
 client.commands = new Collection();
-client.prefix = config.prefix;
+client.prefix = process.env.PREFIX;
 client.aliases = new Collection();
 client.categories = fs.readdirSync(path.resolve('src/commands'));
 ["command"].forEach(handler => {
@@ -39,4 +39,4 @@ process.on("multipleResolves", (type, promise, reason) => {
     console.log(type, promise, reason);
 });
 
-client.login(config.token);
+client.login(process.env.TOKEN);
