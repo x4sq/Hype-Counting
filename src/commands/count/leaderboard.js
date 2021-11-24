@@ -3,6 +3,7 @@ const { ReactionPages } = require('reconlx')
 const data = require('../../schema/Users');
 module.exports = {
     name: 'leaderboard',
+    timeout: 2000,
     /** 
      * @param {Client} client 
      * @param {Message} message 

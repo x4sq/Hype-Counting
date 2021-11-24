@@ -2,12 +2,13 @@ const { Collection, Client, Discord } = require('discord.js');
 const client = new Client({
     disableEveryone: true
 })
-
+const schema = require('./schema/economy')
 const mongoose  = require('mongoose')
 
 const path = require('path')
 const fs = require('fs')
 require('dotenv').config()
+const recondb = require('./recondb')
 //const config = require('./config.json');
 module.exports = client;
 client.commands = new Collection();
@@ -45,5 +46,34 @@ mongoose.connect(process.env.MONGODB_SRV, {
 }).catch((err)=>{
     console.log(err);
 })
+
+client.bal = (id) => new Promise(async ful => {
+    const data = await schema.findOne({ id });
+    if(!data) return ful(0);
+    ful(data.doubloons)
+})
+
+client.add = (id, doubloons) =>{
+    schema.findOne({ id }, async(err, data)=>{
+        if(err) throw err;
+        if(data){
+            data.doubloons += doubloons;
+        } else {
+            data = new schema({ id, doubloons })
+        }
+        data.save();
+    })
+}
+client.rmv = (id, doubloons) =>{
+        schema.findOne({ id }, async(err, data)=>{
+        if(err) throw err;
+        if(data){
+            data.doubloons -= doubloons;
+        } else {
+            data = new schema({ id, doubloons: -doubloons })
+        }
+        data.save();
+    })
+}
 
 client.login(process.env.TOKEN);

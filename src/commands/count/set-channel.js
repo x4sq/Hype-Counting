@@ -2,6 +2,7 @@ const { Client, Message, MessageEmbed } = require('discord.js');
 const Guild = require('../../schema/Guild');
   module.exports = {
       name: 'set-channel',
+      timeout: 20000,
       /** 
        * @param {Client} client 
        * @param {Message} message 

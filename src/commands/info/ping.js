@@ -3,6 +3,7 @@ module.exports = {
     name : 'ping',
     category : 'info',
     description : 'Returns latency and API ping',
+    timeout: 3000,
 
     /**
      * @param {Client} client
