@@ -9,7 +9,7 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        if(!message.member.permissions.has('MANAGE_MESSAGES')) return;
+        if(!message.member.permissions.has('MANAGE_MESSAGES')) return message.reply('Invalid permissions')
         const messageID = args[0];
         const denyQuery = args.slice(1).join(" ");
 
@@ -18,7 +18,6 @@ module.exports = {
         try {
             const suggestionChannel = message.guild.channels.cache.get('849881360135225364');
             const suggestedEmbed = await suggestionChannel.messages.fetch(messageID);
-            console.log(suggestedEmbed)
 
             const suggestedEmbedData = suggestedEmbed.embeds[0];
             const denyEmbed = new MessageEmbed()
