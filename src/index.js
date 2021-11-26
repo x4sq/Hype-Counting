@@ -8,7 +8,6 @@ const mongoose  = require('mongoose')
 const path = require('path')
 const fs = require('fs')
 require('dotenv').config()
-const recondb = require('./recondb')
 //const config = require('./config.json');
 module.exports = client;
 client.commands = new Collection();

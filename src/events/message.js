@@ -1,8 +1,7 @@
-const timeout = require('reconlx/data/functions/timeout');
+
 const client = require('../../src/index');
 const Discord = require('discord.js')
 const Timeout = new Discord.Collection();
-const db = require('../recondb');
 const prefix = client.prefix;
 const ms = require('ms')
 

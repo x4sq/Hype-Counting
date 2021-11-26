@@ -2,7 +2,8 @@ const { Client, Message, MessageEmbed } = require('discord.js');
 const { ReactionPages } = require('reconlx')
 const data = require('../../schema/Users');
 module.exports = {
-    name: 'leaderboard',
+    name: 'count-leaderboard',
+    aliases: ['counting-leaderboard', 'cl'],
     timeout: 2000,
     /** 
      * @param {Client} client 
