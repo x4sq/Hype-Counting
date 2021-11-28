@@ -5,6 +5,22 @@ const { getCommands } = require('../utils')
 client.on('ready', (message) => {
     console.log(`${client.user.tag} is now online!`);
 
+    const arrayOfStatuses = [
+        `over ${client.guilds.cache.size} servers!`,
+        `over ${client.channels.cache.size} channels!`,
+        `over ${client.users.cache.size} members!`,
+        `for >help`
+    ];
+
+    let index = 0;
+    setInterval(() =>{
+        if(index === arrayOfStatuses.length) index = 0;
+        const status = arrayOfStatuses[index];
+        console.log(status);
+        client.user.setActivity(status, { type: 'WATCHING' });
+        index++
+    }, 10000)
+
     const clientDetails = {
         guilds: client.guilds.cache.size,
         users: client.users.cache.size,

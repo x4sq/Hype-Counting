@@ -28,6 +28,6 @@ client.on('guildMemberAdd', async(member) =>{
              );
 
              const channel = member.guild.channels.cache.get(data.Channel);
-             channel.send(attachment)
+             channel.send(`${user}`, attachment)
     })
 })
