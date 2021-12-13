@@ -12,7 +12,7 @@ module.exports = {
     run: async(client, message, args) => {
         const collection = new Collection();
 
-        message.channel.send('Loading economy leaderboard.... This will take a while..')
+        const msg = await message.channel.send('Loading economy leaderboard.... This will take a while..');
 
 
         await Promise.all(
@@ -29,16 +29,17 @@ module.exports = {
         );
         const data = collection.sort((a, b) => b.bal - a.bal).first(5);
 
-        message.channel.send(
-            new MessageEmbed()
-            .setTitle('Leaderboard in '+ message.guild.name)
-            .setThumbnail(message.guild.iconURL({ dynamic: true }))
-            .setColor('#ffab44')
-            .setDescription(
-                data.map((v, i) =>{
-                    return `${i+1}) ${client.users.cache.get(v.id)} => ${v.bal} doubloons`
-                })
-            )
+        const leaderboardEmbed = new MessageEmbed()
+        .setTitle('Leaderboard in '+ message.guild.name)
+        .setThumbnail(message.guild.iconURL({ dynamic: true }))
+        .setColor('#ffab44')
+        .setDescription(
+            data.map((v, i) =>{
+                return `${i+1}) ${client.users.cache.get(v.id)} => ${v.bal} doubloons`
+            })
         )
+        message.channel.send(leaderboardEmbed)
+        msg.delete()
+        console.log('Sent econ leaderboard and deleted loading message')
     }
 }

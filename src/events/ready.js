@@ -16,7 +16,6 @@ client.on('ready', (message) => {
     setInterval(() =>{
         if(index === arrayOfStatuses.length) index = 0;
         const status = arrayOfStatuses[index];
-        console.log(status);
         client.user.setActivity(status, { type: 'WATCHING' });
         index++
     }, 10000)
