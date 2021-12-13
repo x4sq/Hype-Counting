@@ -38,7 +38,7 @@ module.exports = {
                 return `${i+1}) ${client.users.cache.get(v.id)} => ${v.bal} doubloons`
             })
         )
-        message.channel.send(leaderboardEmbed)
+        message.channel.send({embeds: [leaderboardEmbed] })
         msg.delete()
         console.log('Sent econ leaderboard and deleted loading message')
     }

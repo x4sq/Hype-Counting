@@ -12,6 +12,7 @@ module.exports = {
     run: async(client, message, args) => {
         if(!message.member.permissions.has('MANAGE_MESSAGES')) return;
         const member = message.mentions.members.first() || message.member;
+        if(isNaN(args[0])) return message.channel.send('Please specify a number, not a word value.')
 
         client.add(member.id, parseInt(args[0]));
 
@@ -22,6 +23,6 @@ module.exports = {
         .setTimestamp()
         .setDescription(`Successfully added ${args} doubloons to ${member}.`)
 
-        message.channel.send(addEmbed)
+        message.channel.send({embeds: [addEmbed] })
     }
 }

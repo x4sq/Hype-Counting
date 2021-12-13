@@ -1,12 +1,12 @@
 
-const client = require('../../src/index');
+const client = require('../index');
 const Discord = require('discord.js')
 const Timeout = new Discord.Collection();
 const prefix = client.prefix;
 const ms = require('ms')
 
 
-client.on('message', async message =>{
+client.on('messageCreate', async message =>{
     const { Collection } = require('discord.js')
     if(message.author.bot) return;
     if(!message.content.startsWith(prefix)) return;

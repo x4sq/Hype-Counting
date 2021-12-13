@@ -10,7 +10,7 @@ const Guild = require('../../schema/Guild');
        */
       run: async(client, message, args) => {
         const channel = message.mentions.channels.first();
-        if(!channel) return message.reply('no channel')
+        if(!channel) return message.reply('no channel');
         Guild.findOne({
           id: message.guild.id,
         }, async(err, data) => {

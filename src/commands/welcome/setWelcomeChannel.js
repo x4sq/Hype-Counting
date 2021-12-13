@@ -13,7 +13,7 @@ module.exports = {
         if(!message.member.permissions.has('MANAGE_ROLES')) return;
 
         const channel = message.mentions.channels.first();
-        if(!channel) return message.reply('Please mention a channel.')
+        if(!channel) return message.reply('Please mention a channel.');
 
         Schema.findOne({ Guild: message.guild.id}, async(err, data) =>{
             if(data){

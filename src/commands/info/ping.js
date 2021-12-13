@@ -16,7 +16,7 @@ module.exports = {
         const embed = new MessageEmbed()
             .setTitle('Pong!')
             .setDescription(`WebSocket ping is ${client.ws.ping}MS\nMessage edit ping is ${Math.floor(msg.createdAt - message.createdAt)}MS!`)
-            await message.channel.send(embed)
+            await message.channel.send({ embeds: [embed] })
             msg.delete()
 
     }

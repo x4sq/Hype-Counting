@@ -64,6 +64,6 @@ module.exports = {
                 )
                 .setFooter(`Hype`)
         
-                message.reply(embed)
+                message.reply({ embeds: [embed] })
     }
     }

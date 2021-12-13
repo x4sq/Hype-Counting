@@ -17,7 +17,7 @@ module.exports = {
         .map((member)=> member.user.tag)
         .join(", ");
 
-        message.channel.send(bannedMembers)
+        message.channel.send({ embeds: [bannedMembers] })
 
     }
 }

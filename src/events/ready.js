@@ -51,6 +51,6 @@ client.on('ready', (message) => {
     })
 
     app.listen(port)
-    console.log('Dashboard/website is now running.')
+    console.log('Dashboard/website is now running.');
 
 })

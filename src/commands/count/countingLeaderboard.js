@@ -1,5 +1,6 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
 const { ReactionPages } = require('reconlx')
+const reconlx = require('reconlx')
 const data = require('../../schema/Users');
 module.exports = {
     name: 'count-leaderboard',
@@ -28,7 +29,7 @@ module.exports = {
                         .setDescription(chunking)
                     )
                 }
-                ReactionPages(message, arry, true)
+                reconlx.ReactionPages(message, arry, true)
             } else {
                 const mapping = sort.map((v) => `\`#${i++}\` **<@${v.id}>** (${v.Counts} counts)`).join('\n\n')
                 message.channel.send(

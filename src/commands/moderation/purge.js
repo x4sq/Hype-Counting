@@ -24,9 +24,9 @@ module.exports = {
             if(!args[0])
             return message.channel.send('Please specify a range of numbers to delete from 1-99.');
             if(isNaN(args[0]))
-            return message.channel.send('Did not recieve a valid number.')
+            return message.channel.send('Did not recieve a valid number.');
             if(parseInt(args[0]) > 99)
-            return message.channel.send('The maximum amount of messages I can delete is 99.')
+            return message.channel.send('The maximum amount of messages I can delete is 99.');
 
         
             await message.channel

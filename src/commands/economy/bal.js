@@ -15,10 +15,10 @@ module.exports = {
         const balEmbed = new MessageEmbed()
         .setTimestamp()
         .setFooter('Hype')
-        .setDescription(`** ${bal}` + " doubloons **")
+        .setDescription(`**Your balance is ${bal}` + " doubloons **")
         .setTitle('Balance')
         .setColor('#ffab44')
-        message.channel.send(balEmbed);
+        message.channel.send({ embeds: [balEmbed] });
 
     }
 }

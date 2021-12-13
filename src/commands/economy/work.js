@@ -27,7 +27,7 @@ module.exports = {
         .setTimestamp()
         .setDescription(`You worked as **a/an ${jobs[jobIndex]}** and earned **${doubloons} doubloons!**`)
 
-        message.channel.send(workEmbed)
+        message.channel.send({ embeds: [workEmbed] })
         client.add(message.author.id, doubloons)
     }
 }

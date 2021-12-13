@@ -21,6 +21,6 @@ module.exports = {
         .setTimestamp()
         .setDescription(`Successfully removed ${args} doubloons from ${member}.`)
 
-        message.channel.send(removeEmbed)
+        message.channel.send({ embeds: [removeEmbed] })
     }
 }

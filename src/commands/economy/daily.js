@@ -21,7 +21,7 @@ module.exports = {
         .setTimestamp()
         .setDescription(`You recieved **${doubloons} doubloons** as your daily reward. Make sure to come back and claim it in 24 hours!`)
 
-        message.channel.send(dailyEmbed)
+        message.channel.send({ embeds: [dailyEmbed] })
         client.add(message.author.id, doubloons)
     }
 }

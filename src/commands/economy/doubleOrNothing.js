@@ -30,7 +30,7 @@ module.exports = {
             message.channel.send(
                 `You lost ${amountToBet} doubloons. Try again later!`
             );
-            client.rmv(message.author.id, amountToBet)
+            client.rmv(message.author.id, amountToBet);
         }
 
     }

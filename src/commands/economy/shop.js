@@ -25,6 +25,6 @@ module.exports = {
         .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
 
 
-        message.channel.send(shopListEmbed)
+        message.channel.send({ embeds: [shopListEmbed] })
     }
 }

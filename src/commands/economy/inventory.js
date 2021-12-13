@@ -14,7 +14,7 @@ module.exports = {
         inventory.findOne(
             { Guild: message.guild.id, User: message.author.id },
              async(err, data) => {
-            if(!data) return message.channel.send('Your inventory is empty.')
+            if(!data) return message.channel.send('Your inventory is empty.');
             const mappedData = Object.keys(data.Inventory).map((key)=>{
                 return `${key}(${data.Inventory[key]})`
             }).join("\n");

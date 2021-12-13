@@ -3,7 +3,7 @@ const client = require('../index');
 const Discord = require('discord.js')
 const db = require('../schema/Guild');
 const user = require("../schema/Users");
-client.on('message', async(message, client) => {
+client.on('messageCreate', async(message, client) => {
     const data = await db.findOne({ id: message.guild.id });
 
     if(!data) return; 

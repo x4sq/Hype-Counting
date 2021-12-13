@@ -47,8 +47,8 @@ module.exports = {
                 }).save();
 
             }
-            message.reply(`You have successfully purchased ${itemToBuy} for ${itemPrice} doubloons.`)
-            client.rmv(message.author.id, itemPrice)
+            message.reply(`You have successfully purchased ${itemToBuy} for ${itemPrice} doubloons.`);
+            client.rmv(message.author.id, itemPrice);
         }
         
         )
