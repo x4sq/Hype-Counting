@@ -1,4 +1,4 @@
-##### Hype Commit Notes
+# Hype Commit Notes
 ```
 $ means updated
 ! means deleted
