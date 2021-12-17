@@ -18,7 +18,7 @@ client.on('messageCreate', async(message, client) => {
         .setColor('GREEN')
         .setTitle('Correct number!')
         .setDescription(`Next number is: ${data.Current + 2}`)
-        message.reply(embed)
+        message.reply({ embeds: [embed] })
         user.findOne({ id: message.author.id, Guild: message.guild.id }, async(err, data) => {
             if(err) throw err;
             if(data) {

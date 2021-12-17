@@ -11,6 +11,7 @@ const Discord = require('discord.js')
 const client = new Discord.Client({ disableEveryone: true, partials: ["MESSAGE", "CHANNEL", "REACTION"], intents: [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384],})
 module.exports = client;
 client.commands = new Collection();
+client.slashCommands = new Collection();
 client.prefix = process.env.PREFIX;
 client.aliases = new Collection();
 client.categories = fs.readdirSync(path.resolve('src/commands'));

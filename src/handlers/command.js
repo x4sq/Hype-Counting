@@ -3,7 +3,14 @@ const ascii = require("ascii-table");
 const path = require('path')
 let table = new ascii("Commands");
 table.setHeading("Command", " Load status");
-module.exports = (client) => {
+
+
+const { glob } = require('glob');
+const { promisify } = require('util');
+const globPromise = promisify(glob);
+module.exports = async (client) => {
+
+
   readdirSync("./src/commands/").forEach((dir) => {
     const commands = readdirSync(`./src/commands/${dir}/`).filter((file) =>
       file.endsWith(".js")
@@ -41,4 +48,26 @@ module.exports = (client) => {
       }
     }
   });
+
+
+
+
+  // Slash
+  const slashCommands = await globPromise(`${process.cwd()}/src/slash/*/*.js`);
+
+  const arrayOfSlashCommands = [];
+
+  slashCommands.map((value) => {
+    const file = require(value);
+    if(!file?.name) return;
+
+    client.slashCommands.set(file.name, file)
+    arrayOfSlashCommands.push(file)
+  });
+
+  client.on('ready', async() => {
+    await client.guilds.cache
+    .get('789648149537882162')
+    .commands.set(arrayOfSlashCommands)
+  })
 };
