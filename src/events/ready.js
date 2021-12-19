@@ -6,12 +6,11 @@ client.on('ready', (message) => {
     console.log(`${client.user.tag} is now online!`);
 
     const arrayOfStatuses = [
-        `over ${client.guilds.cache.size} servers!`,
+        `over ${client.guilds.cache.size} servers!`, 
         `over ${client.channels.cache.size} channels!`,
         `over ${client.users.cache.size} members!`,
         `for >help`
     ];
-
     let index = 0;
     setInterval(() =>{
         if(index === arrayOfStatuses.length) index = 0;
